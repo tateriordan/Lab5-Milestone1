@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,12 +35,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickFunction(View view){
+//        EditText myTextField = (EditText)findViewById(R.id.textView);
+//        String str = myTextField.getText().toString();
+        TextView textView = (TextView) findViewById(R.id.textView);
+        String helper = textView.getText().toString();
         SharedPreferences sharedPreferences = getSharedPreferences("com.example.lab5_milestone1", Context.MODE_PRIVATE);
-        sharedPreferences.edit().putString("username", "tate").apply();
-        EditText myTextField = (EditText)findViewById(R.id.textView);
-        String str = myTextField.getText().toString();
+        sharedPreferences.edit().putString("username", helper).apply();
         Intent intent = new Intent(this, MainActivity2.class);
-        intent.putExtra("message", str);
+        intent.putExtra("username", helper);
         startActivity(intent);
+//        goToActivity2(str);
     }
+
+//    public void goToActivity2(String s){
+//        Intent intent = new Intent(this, MainActivity2.class);
+//        intent.putExtra("message", s);
+//        startActivity(intent);
+//    }
 }
