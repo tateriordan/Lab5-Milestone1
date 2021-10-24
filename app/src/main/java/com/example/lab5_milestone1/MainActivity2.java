@@ -11,20 +11,23 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity2 extends AppCompatActivity {
 
     private NavigationBarView bottomNavigationView;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
+        textView = (TextView) findViewById(R.id.textView);
         Intent intent = getIntent();
-
+        String str = intent.getStringExtra("message");
+        textView.setText("Welcome " + str);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
